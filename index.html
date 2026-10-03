@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ANGÉLICA — 8-BIT EDITION</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="crt">
+<div id="scan"></div>
+
+<!-- TELA DE ABERTURA -->
+<section id="start" class="screen">
+  <div class="box">
+    <p>MISSÃO ESPECIAL</p>
+    <h1>SITE DA ANGÉLICA</h1>
+    <p>8-BIT EDITION</p>
+    <button class="btn gold" id="btnStart">[ INICIAR ]</button>
+    <p class="blink">PRESS START</p>
+  </div>
+</section>
+
+<!-- JOGO -->
+<div id="game" hidden>
+  <header>
+    <div class="hud">
+      <span>PLAYER 1</span><span>MISSION: 01</span>
+      <span>STATUS: <b id="status">WAITING</b></span><span>SCORE: <b id="score">000000</b></span>
+    </div>
+    <div class="bar">
+      <button id="burger" aria-label="Menu" aria-expanded="false">☰ MENU</button>
+      <nav id="nav">
+        <button data-tab="missao" class="on">MISSÃO</button>
+        <button data-tab="objetivo">OBJETIVO</button>
+        <button data-tab="calma">NÃO SE PREOCUPE</button>
+        <button data-tab="como">COMO VAI SER?</button>
+        <button data-tab="detalhe">PEQUENO DETALHE</button>
+        <button data-tab="ps">PS</button>
+        <button data-tab="entre">ENTRE NÓS</button>
+      </nav>
+      <div class="opts"><button id="optCrt">CRT: ON</button><button id="optSnd">SOUND: ON</button></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="missao" class="tab on">
+      <div class="box"><h2>MISSÃO 01</h2><p>OBJETIVO: RESPONDER À PERGUNTA</p></div>
+      <div class="dialog"><span id="q1"></span></div>
+      <div class="dialog" id="q2box" style="visibility:hidden"><span id="q2"></span></div>
+      <div id="arena">
+        <button class="btn green sim">[ SIM ]</button>
+        <button class="btn green sim">[ SIM, VAMOS ]</button>
+        <button class="btn green sim">[ CLARO ]</button>
+        <button class="btn green sim">[ VAMOS ]</button>
+        <button class="btn green sim">[ ACEITO ]</button>
+        <button class="btn green sim">[ SIM! ]</button>
+        <div id="noSlot"><button class="btn red" id="btnNo">[ NÃO ]</button></div>
+      </div>
+      <p id="msg" class="msg"></p>
+    </section>
+
+    <section id="objetivo" class="tab">
+      <div class="box"><h2>OBJETIVOS DA MISSÃO</h2>
+        <ul class="quest">
+          <li>[✓] REZAR POR SEU CONCURSO.</li>
+          <li>[✓] REZAR POR SUA VIDA.</li>
+          <li>[✓] REZAR PARA TER FORÇA PARA ESTUDAR.</li>
+          <li>[✓] AGRADECER PELA SUA VIDA, QUE É MARAVILHOSA.</li>
+          <li>[✓] ENTRE OUTRAS INTENÇÕES.</li>
+        </ul></div>
+    </section>
+
+    <section id="calma" class="tab">
+      <div class="box"><h2>NÃO SE PREOCUPE</h2>
+        <p>É SOMENTE UMA MISSA.</p>
+        <p>TERMINANDO, VOCÊ VAI PARA SUA CASA<br>E EU VOU PARA A MINHA.</p>
+        <p>SEM CONTRATOS.<br>SEM COMPROMISSOS.<br>SEM LETRAS MIÚDAS.</p>
+        <p class="gold">PROMETO.</p>
+        <div id="walker"></div></div>
+    </section>
+
+    <section id="como" class="tab">
+      <div class="box"><h2>COMO VAI FUNCIONAR?</h2>
+        <ol class="steps">
+          <li>VOCÊ VAI COMIGO.</li><li>A GENTE VAI À MISSA.</li><li>A GENTE REZA.</li>
+          <li>A GENTE CONVERSA.</li><li>DEPOIS CADA UM SEGUE SUA VIDA NORMALMENTE.</li>
+        </ol>
+        <p class="gold">MISSÃO SIMPLES.<br>DIFICULDADE: FÁCIL.</p></div>
+    </section>
+
+    <section id="detalhe" class="tab">
+      <div class="box"><h2>PEQUENO DETALHE</h2>
+        <div class="dialog"><span id="npc"></span></div></div>
+    </section>
+
+    <section id="ps" class="tab">
+      <div class="box"><h2>PS</h2>
+        <p>SE VOCÊ CHEGOU ATÉ AQUI<br>SEM CLICAR EM SIM...</p>
+        <p class="gold">RESPEITO.</p><p>MAS A MISSÃO CONTINUA.</p>
+        <button class="btn gold" data-tab="missao">[ VOLTE PARA A FASE 01 ]</button></div>
+    </section>
+
+    <section id="entre" class="tab">
+      <div class="box"><h2>ENTRE NÓS</h2>
+        <p>NO FIM DAS CONTAS,<br>É SÓ UM CONVITE.</p>
+        <p>UMA MISSA.<br>UMA CONVERSA.<br>E UM MOMENTO TRANQUILO.</p>
+        <p class="gold">MAS EU GOSTARIA QUE VOCÊ FOSSE COMIGO.</p></div>
+    </section>
+  </main>
+</div>
+
+<!-- VITÓRIA E CUTSCENE -->
+<canvas id="fx"></canvas>
+<div id="flash"></div>
+<section id="win" class="screen" hidden><div class="box"><h1 id="winT"></h1><p id="winS"></p></div></section>
+<section id="cut" class="screen" hidden>
+  <p id="loading">LOADING NEXT SCENE...</p>
+  <canvas id="scene" width="320" height="180"></canvas>
+  <p id="cutT"></p>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
